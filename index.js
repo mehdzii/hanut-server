@@ -91,6 +91,11 @@ app.post('/api/products', async (req, res) => {
   res.json(updated);
 });
 
+app.delete('/api/products/:id', async (req, res) => {
+  await ProductModel.deleteOne({ id: req.params.id });
+  res.json({ success: true });
+});
+
 // Customers Routes
 app.get('/api/customers', async (req, res) => {
   const customers = await CustomerModel.find();
